@@ -449,51 +449,6 @@
     el.classList.add('active');
     document.getElementById('panel-' + id).classList.add('active');
   }
-
-  const replies = [
-    { keys: ['你好', 'hi'], reply: ['你好呀。', '我在呢。'] },
-    { keys: ['想你','我想你了'], reply: ['我也想你。', '真的想我了吗？','这么把我放在心上以后可怎么办？'] },
-    { keys: ['晚安'], reply: ['晚安，好梦。', '晚安，要梦到我哦…^^','要睡了吗？可惜不能再多陪你一会了。'] },
-    { keys: ['喜欢', '喜欢你','我喜欢你'], reply: ['我也是。', '真的喜欢我吗？','你想听我说喜欢你吗？','喜欢我的话会和我一直在一起吗？'] },
-    { keys: ['早安','早上好'], reply: ['早。', '你起来啦？要好好吃饭哦。','早啊，你的梦里有我吗姐姐？'] },
-    { keys: ['今天天气真好'], reply: ['你也是。', '我觉得好冷啊！','啊好热的天气…'] },
-  ];
-
-  function addMsg(text, isMe) {
-  const body = document.getElementById('chat-body');
-  const row = document.createElement('div');
-  row.className = 'msg-row' + (isMe ? ' me' : '');
-  const avatar = isMe ? 'mmexport1791752524758.jpg' : 'IMG_20261012_050122.jpg';
-  row.innerHTML = `
-    <div class="msg-avatar"><img src="${avatar}"></div>
-    <div class="bubble">${text}</div>
-  `;
-  body.appendChild(row);
-  body.scrollTop = body.scrollHeight;
-  }
-
-  function sendMsg() {
-    const input = document.getElementById('chat-input');
-    const text = input.value.trim();
-    if (!text) return;
-    addMsg(text, true);
-    input.value = '';
-
-    setTimeout(() => {
-      let matched = [];
-      for (const item of replies) {
-        if (item.keys.some(k => text.includes(k))) {
-          matched.push(...item.reply);
-        }
-      }
-      if (matched.length === 0) matched = [text];
-      const reply = matched[Math.floor(Math.random() * matched.length)];
-      addMsg(reply, false);
-    }, 600);
-  }
-
-  addMsg('我很高兴自己可以被姐姐需要。', false);
-
   /* 音乐 */
   function toggleMusic() {
   const bgm = document.getElementById('bgm');
